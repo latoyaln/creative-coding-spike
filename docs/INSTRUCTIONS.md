@@ -1,5 +1,5 @@
 
-# Back to Static - Creative Coding Spike
+# Creative Coding Spike
 
 Ontwerp en maak creatieve oplossingen voor de interface.
 
