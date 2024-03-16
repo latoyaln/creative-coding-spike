@@ -1,7 +1,10 @@
 > _Fork_ deze deeltaak en ga aan de slag. 
 De instructie vind je in: [docs/INSTRUCTIONS.md](docs/INSTRUCTIONS.md)
 
-# Naam deeltaak
+# Creative Coding Spike
+
+Ontwerp en maak creatieve oplossingen voor de interface.
+
 
 ## Licentie
 
