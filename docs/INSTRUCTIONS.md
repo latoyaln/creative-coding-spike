@@ -26,14 +26,19 @@ Elke week ontwerp en maak je een creatieve oplossing, welke je op vrijdag gaat t
 
 ## Aanpak
 
-1. Kies of bedenk een experiment om te gaan maken, gebruik hiervoor de (FDND Conceptroulette)[https://conceptroulette.fdnd.nl/]
-2. Zoek inspiratie op het web en schets (snel) een aantal ideeen uit in een wireflow
-4. Maak een breakdown-schets met hoe je het experiment in code zou kunnen maken
-5. Bouw je experiment en doe een user test op je klasgenoten
-6. Documenteer je proces in de wiki
-7. Checkpoint op vrijdag tijdens de code/design review
+1. Kies of bedenk in overleg met jouw team een experiment om te gaan maken, gebruik hiervoor de (FDND Conceptroulette)[https://conceptroulette.fdnd.nl/]
+2. Maak een branch voor jouw experiment
+3. Maak een tijdsinschatting en schiet issues in voor je taken (lees even verder voor een idee van taken)
+4. Zoek inspiratie op het web en schets (snel) een aantal ideeen uit in een wireflow
+5. Maak een breakdown-schets met hoe je het experiment in code zou kunnen maken
+6. Bouw je experiment en doe een user test op je klasgenoten
+7. Documenteer je proces in de issue
+8. Checkpoint aankomende vrijdag tijdens de code/design review
 
 ### Materiaal
+Scroll-driven-animations:
+- [scroll-driven-animations.style door Bramus](https://scroll-driven-animations.style/)
+- [Unleash the power of scroll driven animations @ CSS-Tricks](https://css-tricks.com/unleash-the-power-of-scroll-driven-animations/)
 
 Creative coding Inspiratie
 - [7 secrets for enhancing UX with micro-interactions](https://www.webdesignerdepot.com/2015/07/7-secrets-for-enhancing-ux-with-micro-interactions/)
