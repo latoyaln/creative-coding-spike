@@ -3,7 +3,7 @@
   import { onMount } from 'svelte'
 
   let filter = []
-  export let cities
+  export let cities = []
 
   onMount(() => {
     const urlSearchParams = new URLSearchParams($page.url.search)
@@ -23,7 +23,10 @@
         url.searchParams.delete('locatie')
       }
 
-      window.location = url
+      document.querySelector('section').classList.add('fade-out')
+      setTimeout(() => {
+        window.location = url
+      }, 500) // Match the transition duration
     }
   }
 </script>
@@ -49,11 +52,29 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    opacity: 1;
+    transform: scale(1);
+    transition:
+      opacity 0.5s ease-in-out,
+      transform 0.5s ease-in-out;
+  }
+
+  section.fade-out {
+    opacity: 0;
+    transform: scale(0.55);
   }
 
   form {
     display: flex;
     gap: 1rem;
+    transition: all 0.3s ease-in-out;
+  }
+
+  form:has(select:focus) {
+    transform: scale(1.02);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0.8rem;
+    padding: 0.5rem;
   }
 
   form select {
@@ -63,9 +84,14 @@
     color: var(--accent1-primary);
     text-transform: uppercase;
     border-radius: 0.8rem;
+    transition:
+      background-color 1.3s ease-in-out,
+      color 1.3s ease-in-out;
   }
 
-  option {
+  form select:focus {
+    background-color: var(--accent1-primary);
+    color: var(--accent2-primary);
   }
 
   button {
@@ -75,5 +101,10 @@
     border: none;
     border-radius: 0.8rem;
     text-transform: uppercase;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  button:hover {
+    transform: scale(1.05);
   }
 </style>

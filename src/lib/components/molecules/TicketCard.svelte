@@ -1,120 +1,51 @@
 <script>
-  import { Image, RouteIcon, CocktailIcon, Button } from '$lib/index'
+  import { Filter, TicketCard, RetroBackground } from '$lib/index'
   export let itemCollection
-  const items = itemCollection.componentsCollection.items
+  export let cities
 </script>
 
-{#each items as item}
-  <article class="ticket-card">
-    <div>
-      <h3>{item.title}</h3>
-      <Image
-        src={item.image.url}
-        alt={item.image.title}
-        brdRadius="var(--radius-lg)"
-        opacity="0.6"
-        loading="lazy"
-      />
-      <p>{item.price}</p>
-    </div>
+<div class="main-layout">
+  <RetroBackground />
 
-    <div>
-      <p>
-        <span><RouteIcon width="25" height="25" fill="var(--page-bg-color)" /></span>
-        {item.location}
-      </p>
+  <div class="transition-overlay"></div>
 
-      <p>
-        <span><CocktailIcon width="25" height="25" fill="var(--page-bg-color)" /></span>
-        {item.cocktailDescription}
-      </p>
+  <section class="header">
+    <h1>Tickets</h1>
+    <Filter {cities} />
+  </section>
 
-      <div>
-        <Button type="button" variant="primary" title="Book Now" size="m" />
-        <Button href="/home/{item.slug}" variant="secondary" title="Read More" size="m" />
-      </div>
-    </div>
-  </article>
-{/each}
+  <section class="tickets">
+    <TicketCard {itemCollection} />
+  </section>
+</div>
 
 <style>
-  article {
-    min-width: 320px;
-    height: 400px;
-    border-radius: var(--radius-lg);
-    background-color: var(--accent2-quaternary);
-    scroll-snap-align: start;
-    scroll-snap-align: center;
-  }
-
-  div:nth-of-type(1) {
+  .main-layout {
     position: relative;
-    background: linear-gradient(137deg, rgba(206, 101, 56, 1) 0%, rgba(32, 22, 17, 1) 0%);
+    background: white;
+    overflow: hidden;
+    min-height: 100vh;
+    color: hsl(0, 0%, 10%);
   }
 
-  div:nth-of-type(2) {
+  .header {
+    margin: 7rem 4rem 4rem 4rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    color: hsl(0, 0%, 20%);
+    text-shadow: 2px 2px hsl(45, 85%, 40%);
+  }
+
+  .tickets {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 1rem;
-    padding: 1em;
-  }
-
-  h3 {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 0;
-    padding: 0.5rem 0.4rem;
-    font-size: var(--fs-md);
-    line-height: 1em;
-    color: var(--txt-quaternary-clr);
-    z-index: 1;
-  }
-
-  div:first-of-type p {
-    position: absolute;
-    left: 1em;
-    top: 1em;
-    padding: 0.5rem;
-    font-weight: 600;
-    border-radius: var(--radius-lg);
-    color: var(--btn-primary-text-clr);
-    background-color: var(--btn-secondary-bg);
-  }
-  p {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-size: var(--fs-md);
-    color: var(--txt-dark-clr);
-  }
-
-  div:nth-of-type(2) > div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: none;
-    gap: 0.2em;
-    padding: 0.9rem 0;
-  }
-
-  @media screen and (min-width: 48em) {
-    article {
-      min-width: 500px;
-      height: 550px;
-    }
-
-    div:nth-of-type(2) {
-      padding: 1em 2em;
-    }
-
-    h3 {
-      font-size: var(--fs-xl);
-    }
-
-    p {
-      font-size: var(--fs-lg);
-    }
+    justify-content: center;
+    position: relative;
+    z-index: 2;
   }
 </style>
