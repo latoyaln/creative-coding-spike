@@ -33,6 +33,7 @@
     --cardMargin: 4vw;
     width: 90%;
     margin: 0 auto;
+    background-color: var(--cs-sky-glacier);
   }
 
   ul {
@@ -66,16 +67,16 @@
   }
 
   .card-number:nth-child(1) .card-body {
-    background-color: #ffd6c5;
+    background-color: var(--cs-ocean-depths);
   }
   .card-number:nth-child(2) .card-body {
-    background-color: #ffd6c5;
+    background-color: var(--cs-ocean-depths);
   }
   .card-number:nth-child(3) .card-body {
-    background-color: #ffd6c5;
+    background-color: var(--cs-ocean-depths);
   }
   .card-number:nth-child(4) .card-body {
-    background-color: #ffd6c5;
+    background-color: var(--cs-ocean-depths);
   }
 
   .card-body {
@@ -119,10 +120,12 @@
     text-transform: uppercase;
     gap: 0.5rem;
     font-size: 1.3rem;
+    color: #fff;
   }
 
   p {
     font-size: 1.2rem;
+    color: #fff;
   }
 
   span {
@@ -132,8 +135,8 @@
     border-radius: 50%;
     text-align: center;
     font-size: 16px;
-    background-color: var(--page-bg-color);
-    color: var(--accent2-quaternary);
+    background-color: #fff;
+    color: var(--cs-ocean-depths);
   }
 
   @media (min-width: 48em) {

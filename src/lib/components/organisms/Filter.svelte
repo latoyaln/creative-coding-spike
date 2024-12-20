@@ -65,9 +65,6 @@
     border-radius: 0.8rem;
   }
 
-  option {
-  }
-
   button {
     padding: 0.5rem 1rem;
     background-color: var(--accent1-primary);

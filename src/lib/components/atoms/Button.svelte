@@ -6,10 +6,31 @@
   export let title = ''
   export let icon = ''
   export let iconColor = ''
+
+  // Audio play and stop functions
+  function playAudio() {
+    const audio = document.getElementById('buttonAudio')
+    audio.play()
+  }
+
+  function stopAudio() {
+    const audio = document.getElementById('buttonAudio')
+    audio.pause()
+    audio.currentTime = 0
+  }
 </script>
 
 {#if href}
-  <a {href} data-sveltekit-preload-data class="btn btn-{variant} btn-{size}" {...$$restProps}>
+  <a
+    {href}
+    data-sveltekit-preload-data
+    class="btn btn-{variant} btn-{size}"
+    {...$$restProps}
+    on:mouseover={playAudio}
+    on:mouseout={stopAudio}
+    on:focus={playAudio}
+    on:blur={stopAudio}
+  >
     {title}
     {#if icon}
       <span class="btn-icon">
@@ -19,7 +40,15 @@
     <slot></slot>
   </a>
 {:else}
-  <button {type} class="btn btn-{variant} btn-{size}" {...$$restProps} on:click>
+  <button
+    {type}
+    class="btn btn-{variant} btn-{size}"
+    {...$$restProps}
+    on:mouseover={playAudio}
+    on:mouseout={stopAudio}
+    on:focus={playAudio}
+    on:blur={stopAudio}
+  >
     {title}
     {#if icon}
       <span class="btn-icon">
@@ -29,6 +58,9 @@
     <slot></slot>
   </button>
 {/if}
+
+<!-- Audio element -->
+<audio id="buttonAudio" src="/src/lib/assets/christmasbells.mp3"></audio>
 
 <style>
   .btn {
@@ -57,16 +89,21 @@
 
   .btn-primary {
     border-radius: var(--btn-radius);
-    background-color: var(--btn-primary-bg);
+    background-color: var(--cs-sky-glacier);
     color: var(--btn-primary-text-clr);
     box-shadow: var(--btn-shadow);
-    border: 2px solid var(--btn-primary-bg);
+    border: 2px solid var(--cs-sky-glacier);
+  }
+
+  .btn-cs {
+    background-color: rgba(37, 98, 121, 0.8);
+    color: #fff;
   }
 
   .btn-secondary {
     border-radius: var(--btn-radius);
-    color: var(--txt-primary-clr);
-    border: 2px solid var(--btn-primary-bg);
+    color: var(--cs-midnight-lagoon);
+    border: 2px solid var(--cs-midnight-lagoon);
   }
 
   .btn-menu {

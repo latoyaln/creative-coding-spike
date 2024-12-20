@@ -1,6 +1,6 @@
 <script>
   import { Link, CocktailIcon, Button, ArrowRight } from '$lib/index'
-  import logo from '$lib/assets/logo.webp'
+  import logo from '$lib/assets/WOGOLogoWhite.avif'
   import nix from '$lib/assets/nix-18.webp'
   export let footerItems
 </script>
@@ -43,7 +43,7 @@
               aria-label={item.title}
               title={item.title}
               fontSize="1rem"
-              color="var(--txt-primary-clr)"
+              color="#fff"
               decoration="underline"
             ></Link>
           </li>
@@ -61,7 +61,7 @@
               aria-label={item.title}
               title={item.title}
               fontSize="1rem"
-              color="var(--txt-primary-clr)"
+              color="#fff"
               decoration="underline"
             ></Link>
           </li>
@@ -77,7 +77,7 @@
               href={item.url}
               fontSize="1rem"
               aria-label={item.title}
-              color="var(--txt-primary-clr)"
+              color="#fff"
               decoration="underline"
             >
               {item.assetCollection.items[0].title}
@@ -147,8 +147,8 @@
     display: flex;
     flex-direction: column;
     gap: 2em;
-    background-color: var(--accent1-tertiary);
-    color: var(--txt-tertiary-clr);
+    background-color: var(--cs-midnight-lagoon);
+    color: #ffff;
   }
   h4 {
     font-size: 1em;
@@ -179,7 +179,7 @@
     padding: 1rem;
     width: 100%;
     border: 0;
-    background-color: var(--accent2-quaternary);
+    background-color: var(--cs-sky-glacier);
     border-radius: 10px;
   }
 
@@ -228,6 +228,6 @@
     margin: 0 auto;
     height: 0.5px;
     border: 0;
-    background-color: var(--accent2-quaternary);
+    background-color: var(--cs-sky-glacier);
   }
 </style>

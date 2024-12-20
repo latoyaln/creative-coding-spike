@@ -9,21 +9,13 @@
       <Image
         src={item.asset.url}
         alt={item.icon.title}
-        opacity="0.4"
+        opacity="0.8"
         brdRadius="10px"
         loading="lazy"
       />
       <div class="content-inner">
         <h3>
-          <span
-            ><Image
-              src={item.icon.url}
-              alt={item.icon.title}
-              width="30"
-              height="30"
-              loading="lazy"
-            /></span
-          >{item.title}
+          {item.title}
         </h3>
         <p>{item.textParagraph}</p>
         <Button
@@ -32,7 +24,7 @@
           title="Read More"
           size="sm"
           icon={ArrowRight}
-          iconColor="var(--accent2-primary)"
+          iconColor="var(--cs-midnight-lagoon)"
         />
       </div>
     </article>
@@ -42,6 +34,7 @@
 <style>
   section {
     padding: 2rem;
+    background: linear-gradient(180deg, rgba(200, 216, 231, 1) 55%, rgba(3, 21, 45, 1) 100%);
   }
 
   article {
@@ -54,7 +47,7 @@
     text-transform: uppercase;
     gap: 1rem;
     padding: 0.5rem 0;
-    color: var(--accent2-tertiary);
+    color: var(--cs-midnight-lagoon);
     font-size: 1.2rem;
   }
 
@@ -63,7 +56,7 @@
     max-width: 32rem;
     text-align: left;
     padding: 1rem 0;
-    color: var(--txt-quaternary-clr);
+    color: var(--cs-midnight-lagoon);
   }
 
   @media (min-width: 55em) {

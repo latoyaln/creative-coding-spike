@@ -6,8 +6,7 @@
 
 {#each items as item}
   <article class="ticket-card">
-    <div>
-      <h3>{item.title}</h3>
+    <div class="image-container">
       <Image
         src={item.image.url}
         alt={item.image.title}
@@ -15,24 +14,25 @@
         opacity="0.6"
         loading="lazy"
       />
-      <p>{item.price}</p>
+
+      <div class="top-right-wrapper">
+        <Button type="button" variant="cs" title="Boek Nu" size="m" />
+      </div>
     </div>
 
     <div>
+      <h3>{item.title}</h3>
       <p>
-        <span><RouteIcon width="25" height="25" fill="var(--page-bg-color)" /></span>
+        <span><RouteIcon width="25" height="25" fill="#fff" /></span>
         {item.location}
       </p>
 
       <p>
-        <span><CocktailIcon width="25" height="25" fill="var(--page-bg-color)" /></span>
+        <span><CocktailIcon width="25" height="25" fill="#fff" /></span>
         {item.cocktailDescription}
       </p>
 
-      <div>
-        <Button type="button" variant="primary" title="Book Now" size="m" />
-        <Button href="/home/{item.slug}" variant="secondary" title="Read More" size="m" />
-      </div>
+      <p>{item.price}</p>
     </div>
   </article>
 {/each}
@@ -42,14 +42,21 @@
     min-width: 320px;
     height: 400px;
     border-radius: var(--radius-lg);
-    background-color: var(--accent2-quaternary);
+    background-color: rgba(37, 98, 121, 0.8);
+    color: #fff;
     scroll-snap-align: start;
     scroll-snap-align: center;
   }
 
-  div:nth-of-type(1) {
+  .image-container {
     position: relative;
     background: linear-gradient(137deg, rgba(206, 101, 56, 1) 0%, rgba(32, 22, 17, 1) 0%);
+  }
+
+  .top-right-wrapper {
+    position: absolute;
+    top: 1em;
+    right: 1em;
   }
 
   div:nth-of-type(2) {
@@ -60,43 +67,13 @@
   }
 
   h3 {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 0;
-    padding: 0.5rem 0.4rem;
-    font-size: var(--fs-md);
-    line-height: 1em;
-    color: var(--txt-quaternary-clr);
-    z-index: 1;
-  }
-
-  div:first-of-type p {
-    position: absolute;
-    left: 1em;
-    top: 1em;
-    padding: 0.5rem;
-    font-weight: 600;
-    border-radius: var(--radius-lg);
-    color: var(--btn-primary-text-clr);
-    background-color: var(--btn-secondary-bg);
+    font-size: var(--fs-lg);
   }
   p {
     display: flex;
     align-items: center;
     gap: 1rem;
     font-size: var(--fs-md);
-    color: var(--txt-dark-clr);
-  }
-
-  div:nth-of-type(2) > div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: none;
-    gap: 0.2em;
-    padding: 0.9rem 0;
   }
 
   @media screen and (min-width: 48em) {
@@ -110,11 +87,11 @@
     }
 
     h3 {
-      font-size: var(--fs-xl);
+      font-size: var(--fs-lg);
     }
 
     p {
-      font-size: var(--fs-lg);
+      font-size: var(--fs-md);
     }
   }
 </style>

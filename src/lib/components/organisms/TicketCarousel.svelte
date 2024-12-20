@@ -30,14 +30,16 @@
       })
     }
     updateActiveIndicator(direction)
-    updateIndicators()
+    updateProgressBar()
   }
 
   function updateActiveIndicator(direction) {
     if (direction === 'right') {
-      activeInd = activeInd >= 3 ? 0 : activeInd + 1
+      activeInd =
+        activeInd >= itemCollection.componentsCollection.items.length - 1 ? 0 : activeInd + 1
     } else {
-      activeInd = activeInd === 0 ? 3 : activeInd - 1
+      activeInd =
+        activeInd === 0 ? itemCollection.componentsCollection.items.length - 1 : activeInd - 1
     }
   }
 
@@ -50,47 +52,23 @@
       behavior: 'smooth',
     })
 
-    updateIndicators()
+    updateProgressBar()
   }
 
-  function updateIndicators() {
-    const indicators = document.querySelectorAll('.carousel-indicator')
-    indicators.forEach((indicator, index) => {
-      if (index === activeInd) {
-        indicator.classList.add('active')
-      } else {
-        indicator.classList.remove('active')
-      }
-    })
+  function updateProgressBar() {
+    const progressBar = document.querySelector('.carousel-progress-bar')
+    if (progressBar) {
+      progressBar.style.width = `${((activeInd + 1) / itemCollection.componentsCollection.items.length) * 100}%`
+    }
   }
 
   onMount(() => {
-    // Zorg ervoor dat de knoppen en indicatoren zichtbaar zijn als de browser JS heeft ingeschakeld
-    const carouselElements = document.querySelectorAll('.carousel-arrow, .carousel-indicator')
-    carouselElements.forEach(function (element) {
+    const carouselElements = document.querySelectorAll('.carousel-arrow, .carousel-progress-bar')
+    carouselElements.forEach((element) => {
       element.hidden = false
-    })
-
-    // Verberg de info-button als JS ingeschakeld is
-    const infoButtons = document.querySelectorAll('.button-container')
-    infoButtons.forEach(function (element) {
-      element.style.display = 'none'
     })
   })
 </script>
-
-<div class="carousel-title">
-  <h2>Explore Cocktail Walks</h2>
-  <Link
-    href="/walks-overview"
-    title="see all walks"
-    size="m"
-    fontSize="var(--fs-lg)"
-    color="var(--accent2-tertiary)"
-    icon={ArrowRight}
-    iconColor="var(--txt-tertiary-clr)"
-  />
-</div>
 
 {#if itemCollection}
   <section>
@@ -117,28 +95,21 @@
       <ArrowRightShort />
     </button>
 
-    <div class="carousel-indicator">
-      <span class="carousel-indicator-span">
-        {#each itemCollection.componentsCollection.items as item, index}
-          <button
-            class="carousel-indicator-span-span {index === activeInd ? 'is-active' : ''}"
-            on:click={() => scrollToSlide(index)}
-          ></button>
-        {/each}
-      </span>
-    </div>
-
-    <div class="button-container">
-      <Button
-        aria-label="slide to next"
-        variant="secondary"
-        title="swipe right to see more slides"
-        size="m"
-        icon={ArrowRight}
-        iconColor="var(--accent2-primary)"
-      />
+    <div class="carousel-progress">
+      <div class="carousel-progress-bar"></div>
     </div>
   </section>
+  <div class="carousel-title">
+    <Link
+      href="/walks-overview"
+      title="see all walks"
+      size="m"
+      fontSize="var(--fs-lg)"
+      color="var(--cs-midnight-lagoon"
+      icon={ArrowRight}
+      iconColor="var(--cs-midnight-lagoon)"
+    />
+  </div>
 {/if}
 
 <style>
@@ -148,18 +119,15 @@
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 3rem 2rem;
+    background-color: var(--cs-sky-glacier);
   }
-  .carousel-title h2 {
-    display: flex;
-    padding-bottom: 0.5rem;
-    color: var(--txt-tertiary-clr);
-    text-transform: uppercase;
-  }
+
   section {
     --arrow-size: 40px;
     width: 100%;
     position: relative;
     overflow: hidden;
+    background-color: var(--cs-sky-glacier);
   }
 
   .card-container {
@@ -177,15 +145,6 @@
     display: none;
   }
 
-  @media (min-width: 55em) {
-    .carousel-title {
-      padding: 3rem 2rem;
-    }
-    .carousel-title h2 {
-      font-size: var(--fs-xl);
-    }
-  }
-
   .carousel-arrow {
     position: absolute;
     top: 50%;
@@ -193,8 +152,8 @@
     justify-content: center;
     top: 0;
     bottom: 64px;
-    background-color: var(--accent2-quaternary);
-    color: var(--txt-dark-clr);
+    background-color: var(--cs-tidepool-blue);
+    color: var(--cs-sky-glacier);
     margin-block: auto;
     height: fit-content;
     width: 48px;
@@ -202,57 +161,33 @@
     border-radius: 50%;
     cursor: pointer;
     opacity: 0.5;
-    transition: opacity 100ms;
+    transition:
+      opacity 100ms,
+      box-shadow 0.3s;
     z-index: 2;
-    cursor: pointer;
   }
 
   .carousel-arrow:hover,
   .carousel-arrow:focus {
     opacity: 1;
+    box-shadow: 0 0 15px var(--cs-sky-dusty);
   }
 
-  .carousel-arrow--prev {
-    left: 3%;
+  .carousel-progress {
+    position: absolute;
+    bottom: 0;
+    left: 1;
+    width: 100%;
+    height: 5px;
+    background-color: var(--cs-sky-dusty);
+    overflow: hidden;
   }
 
-  .carousel-arrow--next {
-    right: 1%;
-  }
-
-  .carousel-indicator {
-    --indicator-size: 20px;
-    --max-indicators: 5;
-    text-align: center;
-    padding: 1rem;
-    pointer-events: auto;
-  }
-
-  .carousel-indicator-span {
-    display: inline-flex;
-    gap: calc(var(--indicator-size) / 2);
-    height: var(--indicator-size);
-  }
-
-  .carousel-indicator-span-span {
-    flex: 0 0 var(--indicator-size);
-    width: var(--indicator-size);
-    height: var(--indicator-size);
-    border-radius: 50%;
-    background: var(--accent2-secondary);
-    opacity: 0.5;
-    transition: 0.2s ease-out opacity;
-    border: none;
-    cursor: pointer;
-  }
-
-  .carousel-indicator-span-span.is-active {
-    opacity: 1;
-  }
-
-  .button-container {
-    display: flex;
-    justify-content: center;
-    padding: 1rem 0;
+  .carousel-progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: var(--cs-midnight-lagoon);
+    box-shadow: 0 0 10px var(--cs-midnight-lagoon);
+    transition: width 0.3s ease-out;
   }
 </style>

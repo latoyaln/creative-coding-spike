@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte'
   import { Link, CartIcon, ArrowDown, Button } from '$lib/index'
-  import logo from '$lib/assets/logo.webp'
+  import logo from '$lib/assets/WOGOLogoWhite.avif'
   export let navigation
 
   // custom js
@@ -80,7 +80,7 @@
               href={link.slug}
               title={link.title}
               arialabel={link.label}
-              color="var(--txt-primary-clr)"
+              color="#ffffff"
               filter="var(--filter-drop)"
             />
             {#if link.subLinksCollection.items.length > 0}
@@ -153,7 +153,7 @@
     <button type="button" id="mobileMenuClose" aria-label="close-menu-button"><span></span></button>
   </section>
   <div class="button-cart-container">
-    <CartIcon width="60px" height="60px" fill="var(--accent2-primary)" />
+    <CartIcon width="60px" height="60px" fill="#ffffff" />
   </div>
 </header>
 
@@ -175,7 +175,7 @@
   header {
     display: flex;
     position: sticky;
-    background-color: #221714;
+    background-color: var(--cs-midnight-lagoon);
     top: 0;
     right: 0;
     left: 0;
@@ -220,13 +220,13 @@
     font-size: var(--fs-md);
     border: none;
     padding: 0;
-    color: var(--txt-primary-clr);
+    color: #ffffff;
   }
 
   .btn-icon {
     display: flex;
     flex-wrap: nowrap;
-    fill: #ffe5d9;
+    fill: var(--cs-sky-glacier);
   }
 
   :global(.more-button svg) {
@@ -239,7 +239,7 @@
     position: absolute;
     top: 150%;
     left: 0;
-    background-color: var(--accent2-tertiary);
+    background-color: var(--cs-sky-glacier);
     border-radius: var(--radius-md);
     overflow: hidden;
     opacity: 0;
@@ -268,7 +268,7 @@
     right: 1rem;
     padding: 1rem 0;
     opacity: 0;
-    background-color: var(--page-bg-color);
+    background-color: var(--cs-sky-glacier);
   }
 
   li:focus-within > .sub-menu {
@@ -304,7 +304,7 @@
       width: 100vw;
       left: 0;
       top: -100vh;
-      background: var(--page-bg-color);
+      background: var(--cs-midnight-lagoon);
       z-index: 999;
     }
 
@@ -339,7 +339,7 @@
       content: '';
       width: 40px;
       height: 3px;
-      background: var(--accent2-primary);
+      background: #ffffff;
       border-radius: var(--radius-lg);
       z-index: 998;
     }
@@ -375,7 +375,7 @@
       content: '';
       width: 40px;
       height: 3px;
-      background: var(--accent2-primary);
+      background: #ffffff;
       border-radius: var(--radius-lg);
     }
 

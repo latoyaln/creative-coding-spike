@@ -1,5 +1,12 @@
 <script>
-  import { Hero, Reviews, TicketCarousel, HowItWorks, HeadLine, WhatWeDo, GiftCard } from '$lib/index'
+  import {
+    Hero,
+    Reviews,
+    TicketCarousel,
+    HowItWorks,
+    HeadLine,
+    WhatWeDo,
+  } from '$lib/index'
   export let items
   export let itemCollection
 </script>
@@ -10,9 +17,9 @@
 
 <Hero {items} />
 <Reviews {items} />
+<HeadLine title="Explore Walks" />
 <TicketCarousel {itemCollection} />
 <HeadLine title="How It Works" />
 <HowItWorks {items} />
 <HeadLine title="What We Do" />
 <WhatWeDo {items} />
-<GiftCard items={items[3]} />
